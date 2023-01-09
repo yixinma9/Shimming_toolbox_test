@@ -1,0 +1,2 @@
+st_dicom_to_nifti --input /Users/qm022/Dropbox_RFlab/shimming_toolbox_mgh_testing/june_22_2022_invivo_scan_bay_5/dicoms/GRE_FM_TW_TRIGGER_60SLI_2MM_BOX_0003_BASELINE --subject sub-06222022 --config /Users/qm022/shimming-toolbox/dcm2bids.json --output /Users/qm022/output_dicom_to_nifti
+st_dicom_to_nifti --input /Users/qm022/Dropbox_RFlab/shimming_toolbox_mgh_testing/june_22_2022_invivo_scan_bay_5/dicoms/GRE_FM_TW_TRIGGER_60SLI_2MM_BOX_0004_BASELINE --subject sub-06222022 --config /Users/qm022/shimming-toolbox/dcm2bids.json --output /Users/qm022/output_dicom_to_nifti
