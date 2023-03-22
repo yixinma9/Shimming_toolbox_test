@@ -12,5 +12,13 @@ st_b0shim dynamic --coil /Users/qm022/Documents/shimming-toolbox/examples/sub-20
 # --slices is determining run volumetric optimization or slice-by-slice optimization
 
 03/22/2023 notes:
-# change the colormap min and max for both B0 maps and signal loss maps
+# Change the colormap min and max for both B0 maps and signal loss maps
+--> Done
+# Make the figure larger so that we can compare the results
+--> Done
 # Found that the signal loss map can large than 1, which means that the sinc function have some negative
+--> Done: like suggested by Devin, take absolute
+# Optimize slice by slice
+--> First try if sequential ever work
+--> Then make a mask of only one slice and see how it works
+--> Figure out how where the mask is applied because if given only one slice, I cannot calculate 
