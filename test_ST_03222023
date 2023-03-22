@@ -1,0 +1,16 @@
+st_b0shim dynamic --coil /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/coil_profiles/profiles_7T_V2.nii \
+/Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/coil_profiles/jason_coil_config.json \
+--fmap /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_fieldmap/fieldmap.nii.gz \
+--anat /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_fieldmap/fieldmap.nii.gz \
+--mask /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_mask/magnitude_bet_mask.nii.gz \
+--mask-dilation-kernel-size 3 --optimizer-criteria mse --regularization-factor 0.1 \
+--optimizer-method least_squares --slices volume --scanner-coil-order -1 \
+--output-file-format-coil slicewise-ch --output-value-format delta \
+--output /Users/qm022/output_dynamic_shim --epi_echo_time 0.025 --weighting-signal-loss 100
+
+# --anat is where the optimization is performed
+# --slices is determining run volumetric optimization or slice-by-slice optimization
+
+03/22/2023 notes:
+# change the colormap min and max for both B0 maps and signal loss maps
+# Found that the signal loss map can large than 1, which means that the sinc function have some negative
