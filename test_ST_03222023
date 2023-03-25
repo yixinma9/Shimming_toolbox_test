@@ -20,7 +20,7 @@ st_b0shim dynamic --coil /Users/qm022/Documents/shimming-toolbox/examples/sub-20
 --mask-dilation-kernel-size 3 --optimizer-criteria grad --regularization-factor 0.1 \
 --optimizer-method least_squares --slices volume --scanner-coil-order -1 \
 --output-file-format-coil slicewise-ch --output-value-format delta \
---output ${out} --epi_echo_time 0.025 --weighting-signal-loss 10000
+--output ${out} --epi_echo_time 0.025 --weighting-signal-loss 0
 
 
 # --anat is where the optimization is performed
