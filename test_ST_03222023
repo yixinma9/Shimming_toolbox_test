@@ -43,6 +43,7 @@ st_b0shim dynamic --coil /Users/qm022/Documents/shimming-toolbox/examples/sub-20
 --> Fixed that
 # the gradient calculation at the edge can be problematic, make sure to take care of that
 --> shrink the mask when it need to be
+# how to import package cv2
 
 for w in {0.1,1,10};do
   out=/Users/qm022/output_dynamic_shim_volume_${w}
