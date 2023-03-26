@@ -42,8 +42,13 @@ st_b0shim dynamic --coil /Users/qm022/Documents/shimming-toolbox/examples/sub-20
 # found that the signal loss optimization function is wrong because signal loss has not been applied with mask
 --> Fixed that
 # the gradient calculation at the edge can be problematic, make sure to take care of that
---> shrink the mask when it need to be
+--> shrink the mask where it need to be: loss function in lsq_optimzer; _plot_static_signal_recovery_mask plot:
 # how to import package cv2
+--> Decide to use another package, because cv2 is just not working, but it's good to know there is an alternative mask_erosion function
+# mask_erode = erode_binary_mask(mask,shape='sphere',size=3)
+--> 
+
+
 
 for w in {0.1,1,10};do
   out=/Users/qm022/output_dynamic_shim_volume_${w}
@@ -58,4 +63,6 @@ for w in {0.1,1,10};do
   --output-file-format-coil slicewise-ch --output-value-format delta \
   --output ${out} --epi_echo_time 0.025 --weighting-signal-loss ${w}
 done
+
+
 
