@@ -78,4 +78,27 @@ for w in {0.1,1,10,100,1000,10000};do
   --output ${out} --epi_echo_time 0.025 --weighting-signal-loss ${w}
 done
 
+for w in {0,0.001,0.01};do
+  out=/Users/qm022/output_dynamic_shim_volume_${w}_slc_32_35
+  mkdir ${out}
+  st_b0shim dynamic --coil /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/coil_profiles/profiles_7T_V2.nii \
+  /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/coil_profiles/jason_coil_config.json \
+  --fmap /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_fieldmap/fieldmap.nii.gz \
+  --anat /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_fieldmap/fieldmap.nii.gz \
+  --mask /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_mask/magnitude_bet_mask_32_35.nii \
+  --mask-dilation-kernel-size 3 --optimizer-criteria grad --regularization-factor 0.1 \
+  --optimizer-method least_squares --slices volume --scanner-coil-order -1 \
+  --output-file-format-coil slicewise-ch --output-value-format delta \
+  --output ${out} --epi_echo_time 0.025 --weighting-signal-loss ${w}
+done
+
+% extract slices of mask, run this on my laptop
+cd /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_mask
+mri = niftiread('magnitude_bet_mask.nii.gz');
+info = niftiinfo('magnitude_bet_mask.nii.gz');
+temp = zeros(size(mri));
+slc = 32:35;
+temp(:,:,slc) = mri(:,:,slc);
+niftiwrite(int16(temp), 'magnitude_bet_mask_32_35', info);
+
 
