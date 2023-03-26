@@ -48,9 +48,8 @@ st_b0shim dynamic --coil /Users/qm022/Documents/shimming-toolbox/examples/sub-20
 # mask_erode = erode_binary_mask(mask,shape='sphere',size=3)
 --> 
 
-
-
-for w in {0.1,1,10};do
+%% Shim whole brain, with different weightings, they tend to generate all similar results
+for w in {0.1,1,10,100,1000,10000};do
   out=/Users/qm022/output_dynamic_shim_volume_${w}
   mkdir ${out}
   st_b0shim dynamic --coil /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/coil_profiles/profiles_7T_V2.nii \
@@ -64,5 +63,19 @@ for w in {0.1,1,10};do
   --output ${out} --epi_echo_time 0.025 --weighting-signal-loss ${w}
 done
 
+%% what about shimming few slices?
+for w in {0.1,1,10,100,1000,10000};do
+  out=/Users/qm022/output_dynamic_shim_volume_${w}_slc_23_27
+  mkdir ${out}
+  st_b0shim dynamic --coil /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/coil_profiles/profiles_7T_V2.nii \
+  /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/coil_profiles/jason_coil_config.json \
+  --fmap /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_fieldmap/fieldmap.nii.gz \
+  --anat /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_fieldmap/fieldmap.nii.gz \
+  --mask /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_mask/magnitude_bet_mask_23_27.nii \
+  --mask-dilation-kernel-size 3 --optimizer-criteria grad --regularization-factor 0.1 \
+  --optimizer-method least_squares --slices volume --scanner-coil-order -1 \
+  --output-file-format-coil slicewise-ch --output-value-format delta \
+  --output ${out} --epi_echo_time 0.025 --weighting-signal-loss ${w}
+done
 
 
