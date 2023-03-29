@@ -97,8 +97,16 @@ cd /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_mask
 mri = niftiread('magnitude_bet_mask.nii.gz');
 info = niftiinfo('magnitude_bet_mask.nii.gz');
 temp = zeros(size(mri));
-slc = 32:3;
+slc = 33;
 temp(:,:,slc) = mri(:,:,slc);
-niftiwrite(int16(temp), 'magnitude_bet_mask_32_35', info);
+niftiwrite(int16(temp), 'magnitude_bet_mask_33', info);
+
+cd /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_mask
+mri = niftiread('magnitude_bet_mask.nii.gz');
+info = niftiinfo('magnitude_bet_mask.nii.gz');
+temp = zeros(size(mri));
+slc = 33:35;
+temp(:,:,slc) = mri(:,:,slc);
+niftiwrite(int16(temp), 'magnitude_bet_mask_33_35', info);
 
 
