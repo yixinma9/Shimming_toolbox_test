@@ -110,7 +110,7 @@ temp(:,:,slc) = mri(:,:,slc);
 niftiwrite(int16(temp), 'magnitude_bet_mask_33_35', info);
 
 for w in {0,0.001,0.01,0.1,1};do
-for slc in {33,33_35,32_35}
+for slc in {33,33_35,32_35};do
   out=/Users/qm022/output_dynamic_shim_volume_${w}_slc_${slc}
   mkdir ${out}
   st_b0shim dynamic --coil /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/coil_profiles/profiles_7T_V2.nii \
@@ -122,6 +122,7 @@ for slc in {33,33_35,32_35}
   --optimizer-method least_squares --slices volume --scanner-coil-order -1 \
   --output-file-format-coil slicewise-ch --output-value-format delta \
   --output ${out} --epi_echo_time 0.025 --weighting-signal-loss ${w}
+done
 done
 
 
