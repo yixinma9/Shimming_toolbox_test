@@ -4,7 +4,7 @@ for slc in {33,33_35,32_35};do
   w=0.01
   out=/Users/qm022/output_dynamic_shim_volume_${w}_sequentialslice
   mkdir ${out}
-  st_b0shim dynamic --coil /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/coil_profiles/profiles_7T_V2_rewrite_header.nii \
+  st_b0shim dynamic --coil /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/coil_profiles/profiles_7T_rewrite_header.nii \
   /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/coil_profiles/jason_coil_config.json \
   --fmap /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_fieldmap/fieldmap.nii.gz \
   --anat /Users/qm022/Documents/shimming-toolbox/examples/sub-20220622/output_fieldmap/fieldmap.nii.gz \
